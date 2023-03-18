@@ -17,12 +17,12 @@
 
     $connect = new mysqli(HOST,USER, PASS, DB);
 
-    $sql = "SELECT * FROM students;";
+    $sql = "SELECT * FROM `students` JOIN `groups` ON `groups`.group_id = `students`.group_id ORDER BY age;";
     $result = $connect->query($sql);
     while ($row = $result->fetch_array
     (MYSQLI_ASSOC)) {
         echo "<p>
-                  $row[lname] $row[fname] $row[age]        
+                  $row[lname] $row[fname] $row[age] $row[name]       
                  </p>";
     }
     
